@@ -1,1 +1,1 @@
-# octo-payment
+# Octo Payment
