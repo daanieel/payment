@@ -1,0 +1,21 @@
+{
+    "name": "daanieel/payment",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Franco",
+            "email": "daniel_franco@me.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "moneyphp/money": "^3.2",
+        "pagarme/pagarme-php": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Octo\\Payment\\": "src/"
+        }
+    }
+}
