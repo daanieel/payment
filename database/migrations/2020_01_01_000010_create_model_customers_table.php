@@ -39,6 +39,7 @@ class CreateModelCustomersTable extends Migration
             $table->morphs($this->columnNames['model_morph_name']);
             $table->integer('customer_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('customer_id')->references('id')->on($this->prefix . 'customers');
         });
     }

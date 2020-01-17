@@ -36,7 +36,6 @@ class CreateBillingsTable extends Migration
             $table->integer('payment_config_id')->unsigned();
             $table->integer('split_rule_id')->unsigned();
             $table->integer('customer_id')->unsigned();
-            $table->morphs('billable');
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('amount');

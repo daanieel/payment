@@ -20,6 +20,14 @@ return [
 
         'model_customers' => 'model_customers',
 
+        /*
+         * Essa e tabela de relacionamento com a 'model' e o 'billing' Nós escolhemos um
+         * nome padrão básico 'model_billings', mas você pode alterá-lo facilmente para
+         * qualquer tabela que desejar.
+         */
+
+        'model_billings' => 'model_billings',
+
     ],
 
     'column_names' => [

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomersTable extends Migration
+class CreateModelBillingsTable extends Migration
 {
     /**
      * The database schema.
@@ -12,6 +12,8 @@ class CreateCustomersTable extends Migration
      * @var Schema
      */
     protected $prefix;
+    protected $columnNames;
+    protected $tableNames;
 
     /**
      * Create a new migration instance.
@@ -21,6 +23,8 @@ class CreateCustomersTable extends Migration
     public function __construct()
     {
         $this->prefix = config('payment.table_names.table_prefix', null);
+        $this->columnNames = config('payment.column_names');
+        $this->tableNames = config('payment.table_names');
     }
 
     /**
@@ -30,17 +34,13 @@ class CreateCustomersTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->prefix . 'customers', function (Blueprint $table) {
+        Schema::create($this->prefix . $this->tableNames['model_billings'], function (Blueprint $table) {
             $table->increments('id');
-            $table->string('gateway_id')->nullable();
-            $table->string('type');
-            $table->string('country');
-            $table->string('document_number');
-            $table->string('name');
-            $table->string('email');
-            $table->date('born_at')->nullable();
+            $table->morphs($this->columnNames['model_morph_name']);
+            $table->integer('billing_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('billing_id')->references('id')->on($this->prefix . 'billings');
         });
     }
 
@@ -51,6 +51,6 @@ class CreateCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists($this->prefix . 'customers');
+        Schema::dropIfExists($this->prefix . $this->tableNames['model_billings']);
     }
 }

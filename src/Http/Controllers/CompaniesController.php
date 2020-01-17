@@ -3,6 +3,8 @@
 namespace Octo\Payment\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Octo\Payment\Models\Billing;
 use Octo\Payment\Models\Company;
 use Octo\Payment\PagarMeRepository;
 
